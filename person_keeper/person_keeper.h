@@ -21,7 +21,7 @@ class PersonKeeper
 public:
     Stack<Person> readPersons(std::string inputFile);
 
-    void writePersons(Stack<Person>& persons, const std::string& outputFile);
+    void writePersons(Stack<Person> persons, const std::string& outputFile);
 
     static PersonKeeper& createInstance();
 

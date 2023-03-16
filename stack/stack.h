@@ -33,6 +33,38 @@ public:
     /// @brief конструктор по умолчанию
     Stack() = default;
 
+    /// @brief конструктор копирования
+    Stack(const Stack<T>& stack)
+    : head_(nullptr)
+    , size_(0)
+    {
+        std::vector<T> nodes;
+        nodes.reserve(stack.size_);
+
+        Node<T>* top = stack.head_;
+
+        // обходим весь стек
+        while (top)
+        {
+            nodes.push_back(top->value_);
+            top = top->next_;
+        }
+        // заносим элементы в стек
+        for (auto it = nodes.rbegin(); it != nodes.rend(); ++it)
+        {
+            push(*it);
+        }
+    }
+
+    /// @brief Конструктор перемещения
+    Stack(Stack<T>&& stack)
+    : head_(nullptr)
+    , size_(0)
+    {
+        std::swap(head_, stack.head_);
+        std::swap(size_, stack.size_);
+    }
+
     /// @brief деструктор
     ~Stack()
     {
@@ -59,7 +91,7 @@ public:
     /// @brief Добавление значения в стек
     /// @param value - значение
     void push(const T& value) {
-        Node<T> newNode = new Node<T>(value, head_);
+        auto* newNode = new Node<T>(value, head_);
         head_ = newNode;
         ++size_;
     }

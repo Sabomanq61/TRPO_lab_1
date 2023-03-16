@@ -49,7 +49,7 @@ Stack<Person> PersonKeeper::readPersons(std::string file)
     return stackPerson; // возращаем стек
 }
 
-void PersonKeeper::writePersons(Stack<Person>& persons, const std::string& outputFile)
+void PersonKeeper::writePersons(Stack<Person> persons, const std::string& outputFile)
 {
     std::ofstream ofstream(outputFile);
 

@@ -26,7 +26,8 @@ public:
 
     virtual ~Error() = default;
 
-    std::string what() {
+    std::string what() const
+    {
         return error_;
     }
 
